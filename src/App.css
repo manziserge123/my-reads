@@ -5,8 +5,8 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: black;
-  color: white;
+  /*background: black;
+  color: white;*/
   /*Invert these lines in the morning.*/
 }
 

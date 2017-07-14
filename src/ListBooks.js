@@ -29,7 +29,6 @@ class ListBooks extends React.Component{
     console.log(this.state);
   }
   render(){
-
     console.log(this.state,this.props);
     const currentlyReadingBooks=this.props.books.filter((book=>book.shelf==='currentlyReading')).map((book)=>{
       return (
@@ -38,9 +37,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{
-                  this.props.moveTo(book,e.target.value);
-                }}>
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="currentlyReading">
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -66,9 +63,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{
-                  this.props.moveTo(book,e.target.value);
-                }}>
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="wantToRead">
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -94,9 +89,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{
-                  this.props.moveTo(book,e.target.value);
-                }}>
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="read">
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
