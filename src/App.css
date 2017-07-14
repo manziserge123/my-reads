@@ -5,7 +5,9 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: white;
+  background: black;
+  color: white;
+  /*Invert these lines in the morning.*/
 }
 
 /* main page */
@@ -176,4 +178,9 @@ body, .app {
 
 .author-name:not(:last-of-type):after {
     content: ',';
+}
+
+
+.loader{
+  padding-left: 100px;
 }

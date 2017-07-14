@@ -1,8 +1,36 @@
 import React from 'react'
+import Loader from 'halogen/PulseLoader'
 
 
 class ListBooks extends React.Component{
+  constructor(props){
+    super(props)
+    console.log(props);
+    this.state={
+      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
+      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
+      readBooks:this.props.books.filter(book=>book.shelf==='read')
+    }
+  }
+  componentWillReceiveProps=()=>{
+    this.setState({
+      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
+      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
+      readBooks:this.props.books.filter(book=>book.shelf==='read')
+    })
+  }
+  componentDidMount(){
+    console.log(this.props);
+    this.setState({
+      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
+      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
+      readBooks:this.props.books.filter(book=>book.shelf==='read')
+    })
+    console.log(this.state);
+  }
   render(){
+
+    console.log(this.state,this.props);
     const currentlyReadingBooks=this.props.books.filter((book=>book.shelf==='currentlyReading')).map((book)=>{
       return (
         <li key={book.id}>
@@ -10,7 +38,9 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select>
+                <select onChange={(e)=>{
+                  this.props.moveTo(book,e.target.value);
+                }}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -36,7 +66,9 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select>
+                <select onChange={(e)=>{
+                  this.props.moveTo(book,e.target.value);
+                }}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -62,7 +94,9 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select>
+                <select onChange={(e)=>{
+                  this.props.moveTo(book,e.target.value);
+                }}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -89,6 +123,7 @@ class ListBooks extends React.Component{
         <div className="list-books-content">
           <div className="bookshelf">
             <h2 className="bookshelf-title">Currently Reading</h2>
+            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {currentlyReadingBooks}
@@ -97,6 +132,7 @@ class ListBooks extends React.Component{
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
+            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {wantToReadBooks}
@@ -105,6 +141,7 @@ class ListBooks extends React.Component{
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Read</h2>
+            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {readBooks}

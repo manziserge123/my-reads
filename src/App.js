@@ -10,15 +10,23 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-     books:[]
+     books:[],
+     loading:false
   }
   componentDidMount(){
+    this.setState({
+      loading:true
+    })
     BooksAPI.getAll().then((books)=>{
-      console.log(books);
       this.setState({
-        books
+        books,
+        loading:false
       })
     })
+  }
+  moveTo=(book,shelf)=>{
+    console.log(book,shelf);
+    BooksAPI.update(book,shelf)
   }
   render() {
     return (
@@ -34,6 +42,8 @@ class BooksApp extends React.Component {
           render={()=>(
             <ListBooks
               books={this.state.books}
+              loadState={this.state.loading}
+              moveTo={this.moveTo}
             />
           )}
         />
