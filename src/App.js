@@ -14,6 +14,9 @@ class BooksApp extends React.Component {
      loading:false
   }
   getAllBooks=()=>{
+    this.setState({
+      loading:true
+    })
     BooksAPI.getAll().then((books)=>{
       this.setState({
         books,
@@ -22,9 +25,6 @@ class BooksApp extends React.Component {
     })
   }
   componentDidMount(){
-    this.setState({
-      loading:true
-    })
     this.getAllBooks()
   }
   moveTo=(book,shelf)=>{

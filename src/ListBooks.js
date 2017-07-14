@@ -3,31 +3,6 @@ import Loader from 'halogen/PulseLoader'
 
 
 class ListBooks extends React.Component{
-  constructor(props){
-    super(props)
-    console.log(props);
-    this.state={
-      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
-      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
-      readBooks:this.props.books.filter(book=>book.shelf==='read')
-    }
-  }
-  componentWillReceiveProps=()=>{
-    this.setState({
-      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
-      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
-      readBooks:this.props.books.filter(book=>book.shelf==='read')
-    })
-  }
-  componentDidMount(){
-    console.log(this.props);
-    this.setState({
-      currentlyReadingBooks:this.props.books.filter(book=>book.shelf==='currentlyReading'),
-      wantToReadBooks:this.props.books.filter(book=>book.shelf==='wantToRead'),
-      readBooks:this.props.books.filter(book=>book.shelf==='read')
-    })
-    console.log(this.state);
-  }
   render(){
     console.log(this.state,this.props);
     const currentlyReadingBooks=this.props.books.filter((book=>book.shelf==='currentlyReading')).map((book)=>{
