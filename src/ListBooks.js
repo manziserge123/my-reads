@@ -1,6 +1,6 @@
 import React from 'react'
 import Loader from 'halogen/PulseLoader'
-
+import {Link} from 'react-router-dom'
 
 class ListBooks extends React.Component{
   render(){
@@ -12,7 +12,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="currentlyReading">
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue={book.shelf}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -38,7 +38,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="wantToRead">
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue={book.shelf}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -64,7 +64,7 @@ class ListBooks extends React.Component{
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue="read">
+                <select onChange={(e)=>{this.props.moveTo(book,e.target.value);}} defaultValue={book.shelf}>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -116,6 +116,9 @@ class ListBooks extends React.Component{
               </ol>
             </div>
           </div>
+        </div>
+        <div className="open-search">
+          <Link to='/search'>Add a book</Link>
         </div>
       </div>
     )

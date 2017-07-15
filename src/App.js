@@ -11,7 +11,9 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
      books:[],
-     loading:false
+     loading:false,
+     searchLoading:false,
+     results:[]
   }
   getAllBooks=()=>{
     this.setState({
@@ -32,6 +34,17 @@ class BooksApp extends React.Component {
       this.getAllBooks()
     })
   }
+  search=(query,maxResults)=>{
+    this.setState({
+      searchLoading:true
+    })
+    BooksAPI.search(query,maxResults).then(results=>{
+      this.setState({
+        searchLoading:false,
+        results:results
+      })
+    })
+  }
   render() {
     console.log(this.state);
     return (
@@ -39,7 +52,12 @@ class BooksApp extends React.Component {
         <Route
           path='/search'
           render={()=>(
-            <Searchpage/>
+            <Searchpage
+              search={this.search}
+              searchLoading={this.state.searchLoading}
+              results={this.state.results}
+              moveTo={this.moveTo}
+            />
           )}
         />
         <Route
