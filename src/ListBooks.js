@@ -1,8 +1,14 @@
 import React from 'react'
 import Loader from 'halogen/PulseLoader'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class ListBooks extends React.Component{
+  static propTypes={
+    books:PropTypes.array.isRequired,
+    loadState:PropTypes.bool.isRequired,
+    moveTo:PropTypes.func.isRequired
+  }
   render(){
     console.log(this.state,this.props);
     const currentlyReadingBooks=this.props.books.filter((book=>book.shelf==='currentlyReading')).map((book)=>{

@@ -1,8 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Loader from 'halogen/PulseLoader'
+import PropTypes from 'prop-types'
 
 class Searchpage extends React.Component{
+  static propTypes={
+    search:PropTypes.func.isRequired,
+    searchLoading:PropTypes.bool.isRequired,
+    results:PropTypes.array,
+    moveTo:PropTypes.func.isRequired
+  }
   state={
     query:''
   }
