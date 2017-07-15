@@ -5,4 +5,4 @@
 
 ### Clone the directory, run `yarn install` and `yarn start` (or `npm install` and `npm start`)
 
-NB: Halogen is being used to show the loading indicator.
+NB: [Halogen](https://github.com/yuanyan/halogen) is being used to show the loading indicator.
