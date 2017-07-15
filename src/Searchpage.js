@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Loader from 'halogen/PulseLoader'
 import PropTypes from 'prop-types'
 
 class Searchpage extends React.Component{
@@ -20,7 +19,7 @@ class Searchpage extends React.Component{
   updateQuery=(query)=>{
     console.log(query.target.value);
     this.setState({
-      query:query.target.value.trim()
+      query:query.target.value
     })
     this.props.search(this.state.query,40)
   }
@@ -66,7 +65,7 @@ class Searchpage extends React.Component{
           </div>
         </div>
         <div className="search-books-results">
-          {this.props.searchLoading && <div className="loader">Loading</div>}<br/>
+          {this.props.searchLoading && <div className="loader">Loading search results...</div>}<br/>
           <div className="loader">{(Object.prototype.toString.call( this.props.results ) === '[object Array]')?`Showing ${results.length} results`:''}<br/><br/></div>
           <div className="loader">{(Object.prototype.toString.call( this.props.results ) === '[object Object]')?`No results`:''}<br/><br/></div>
           <ol className="books-grid">

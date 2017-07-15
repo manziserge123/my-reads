@@ -97,7 +97,7 @@ class ListBooks extends React.Component{
         <div className="list-books-content">
           <div className="bookshelf">
             <h2 className="bookshelf-title">Currently Reading</h2>
-            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
+            {this.props.loadState&&<Loader color="#2e7c31" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {currentlyReadingBooks}
@@ -106,7 +106,7 @@ class ListBooks extends React.Component{
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
-            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
+            {this.props.loadState&&<Loader color="#2e7c31" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {wantToReadBooks}
@@ -115,7 +115,7 @@ class ListBooks extends React.Component{
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Read</h2>
-            {this.props.loadState&&<Loader color="#26A65B" size="16px" margin="4px" className="loader"/>}
+            {this.props.loadState&&<Loader color="#2e7c31" size="16px" margin="4px" className="loader"/>}
             <div className="bookshelf-books">
               <ol className="books-grid">
                 {readBooks}

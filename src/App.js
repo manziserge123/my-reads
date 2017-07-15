@@ -30,7 +30,7 @@ class BooksApp extends React.Component {
     this.getAllBooks()
   }
   moveTo=(book,shelf)=>{
-    BooksAPI.update(book,shelf).then(book=>{
+    BooksAPI.update(book,shelf).then(()=>{
       this.getAllBooks()
     })
   }
@@ -67,6 +67,7 @@ class BooksApp extends React.Component {
               books={this.state.books}
               loadState={this.state.loading}
               moveTo={this.moveTo}
+
             />
           )}
         />
